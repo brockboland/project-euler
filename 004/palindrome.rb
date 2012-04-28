@@ -13,26 +13,12 @@ class Product
   end
   
   def isPalindrome
-    prod_string = @product.to_s
-
-    if (prod_string.length % 2 == 0)
-      # Length is an even number of digits: split in half
-      half_length = prod_string.length / 2
-      first_half = prod_string[0..half_length-1]
-      second_half = prod_string[half_length..-1]
-    else
-      # Length is odd number of digits: ignore middle digit
-      half_length = (prod_string.length / 2).round
-      first_half = prod_string[0..half_length-1]
-      second_half = prod_string[half_length+1..-1]
-    end
-
-    # Check if the front half matches the back half
-    first_half == second_half.reverse
+    @product.to_s == @product.to_s.reverse
   end
 end
 
 
+# Determine the high and low numbers based on the number of digits
 low = 10 ** (digits-1)
 high = ''
 digits.times{ high += '9' }

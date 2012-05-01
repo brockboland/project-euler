@@ -1,7 +1,7 @@
 begin_time= Time.now
 
 # How many digits to include in the numbers being multiplied
-digits = 4
+digits = 3
 
 class Product
   attr_accessor :num1, :num2, :product
@@ -17,20 +17,16 @@ class Product
   end
 end
 
-
 # Determine the high and low numbers based on the number of digits
 low = 10 ** (digits-1)
-high = ''
-digits.times{ high += '9' }
-high = Integer(high)
+high = (10 ** digits) - 1
 
 max_palindrome = 0
 max_factors = []
 
 (low..high).each do |num1|
   (low..high).each do |num2|
-    p = Product.new(num1, num2)
-    if (p.isPalindrome())
+    if ((p = Product.new(num1, num2)).isPalindrome())
       puts p.num1.to_s + 'x' + p.num2.to_s + " =\t\t" + p.product.to_s
       if (p.product > max_palindrome)
         max_palindrome = p.product

@@ -7,3 +7,4 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 Results
 =======
+Takes about 14 seconds to run in Ruby

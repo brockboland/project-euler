@@ -3,27 +3,35 @@ def find_min_factor(max_divisor)
   # Start with the max_divisor (after all, numbers smaller than max_divisor
   # can't be evenly divisible by max_divisor
   counter = max_divisor;
+
   while !check_factor(counter, max_divisor)
     # Increment the number to check by the max_divisor, since the answer will
     # have to be an even multiple of max_divisor
     counter += max_divisor
   end
+
+  # The counter will be the lowest factor at the end of the run
   counter
 end
+
+
 
 # Check if factor is evenly divisible by all positive integers up to and
 # including max_divisor
 def check_factor(factor, max_divisor)
   is_factor = true
+  
   # Start looping high, since higher numbers are less likely to be factors, so
   # the loop can bail out early if the highest number isn't a factor
   # Only loop down to 2, since everything is divisible by 1
   max_divisor.downto(2).each { |i|
     # Determine factor is evenly divisble by 1
     is_factor = is_factor && (factor % i == 0)
+
     # If factor is not evenly divisible by i, don't bother checking lower nums
     break if !is_factor
   }
+
   # Return whether or not it's a factor
   is_factor
 end
